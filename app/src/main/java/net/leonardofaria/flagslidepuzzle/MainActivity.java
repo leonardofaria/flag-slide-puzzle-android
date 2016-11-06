@@ -1,5 +1,7 @@
 package net.leonardofaria.flagslidepuzzle;
 
+import android.content.res.Resources;
+import android.content.res.TypedArray;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
@@ -10,7 +12,9 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.HashMap;
@@ -19,6 +23,8 @@ import java.util.Random;
 public class MainActivity extends AppCompatActivity {
 
     PuzzleGame tpGame = new PuzzleGame();
+    int moves = 0;
+    int resource = 0;
 
     public ImageButton[][] buttonArray = new ImageButton[tpGame.BOARD_ROW][tpGame.BOARD_COL];
 
@@ -47,14 +53,20 @@ public class MainActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
         initializeButtonArray();
-        addImageToPuzzle();
+
+        final TypedArray imgs = getResources().obtainTypedArray(R.array.flags);
+        final Random rand = new Random();
+        final int rndInt = rand.nextInt(imgs.length());
+        resource = imgs.getResourceId(rndInt, 0);
+
+        addImageToPuzzle(resource);
         disableAllButtons();
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_main, menu);
+        // getMenuInflater().inflate(R.menu.menu_main, menu);
         return true;
     }
 
@@ -66,9 +78,11 @@ public class MainActivity extends AppCompatActivity {
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
+        if (id == R.id.action_exit) {
+            finishAffinity();
+            System.exit(0);
         }
+
 
         return super.onOptionsItemSelected(item);
     }
@@ -84,6 +98,8 @@ public class MainActivity extends AppCompatActivity {
                 yVal[i][j] = buttonArray[i][j].getY();
             }
         }
+
+        shuffle();
     }
 
     public void enableAllButtons(){
@@ -102,9 +118,9 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    public void addImageToPuzzle(){
+    public void addImageToPuzzle(int resource){
 
-        Bitmap bmap = BitmapFactory.decodeResource(getResources(), R.drawable.smiley_face);
+        Bitmap bmap = BitmapFactory.decodeResource(getResources(), resource);
         Bitmap bMapScaled = Bitmap.createScaledBitmap(bmap, 750, 750, true);
 
         Bitmap[] bMapArray = new Bitmap[tpGame.BOARD_SIZE];
@@ -149,55 +165,92 @@ public class MainActivity extends AppCompatActivity {
 
 
     }
+
+    public void shuffle() {
+
+        moves = 0;
+
+        //enable the tiles so they can be clicked
+        enableAllButtons();
+
+        initializeButtonArray();
+
+        final TypedArray imgs = getResources().obtainTypedArray(R.array.flags);
+        final Random randResource = new Random();
+        final int rndInt = randResource.nextInt(imgs.length());
+        resource = imgs.getResourceId(rndInt, 0);
+
+        addImageToPuzzle(resource);
+
+        //clear hashmaps denoting relationship between button and location
+        buttonPressRow.clear();
+        buttonPressCol.clear();
+
+        initializeTempArrays();
+
+        //shuffle array
+        Random rand = new Random();
+        for(int i = 0; i < tpGame.BOARD_SIZE; i++){
+            int randomPos = rand.nextInt(tpGame.BOARD_SIZE);
+            int temp = numArray[i];
+            ImageButton tempButton = tempButtonArray[i];
+            numArray[i] = numArray[randomPos];
+            tempButtonArray[i] = tempButtonArray[randomPos];
+            numArray[randomPos] = temp;
+            tempButtonArray[randomPos] = tempButton;
+        }
+
+        //set buttons in random order and update UI accordingly
+        int tempIndex = 0;
+        for(int i = 0; i < tpGame.BOARD_ROW; i++){
+            for(int j = 0; j < tpGame.BOARD_COL; j++ ){
+                tpGame.mBoard[i][j] = numArray[tempIndex];
+                buttonArray[i][j] = tempButtonArray[tempIndex];
+
+                if(tpGame.mBoard[i][j] == 0){
+                    tpGame.setEmptySpaceRow(i);
+                    tpGame.setEmptySpaceCol(j);
+                }
+
+                tempIndex++;
+
+                buttonPressRow.put(buttonArray[i][j].getId(), i);
+                buttonPressCol.put(buttonArray[i][j].getId(), j);
+
+                buttonArray[i][j].setX(xVal[i][j]);
+                buttonArray[i][j].setY(yVal[i][j]);
+            }
+        }
+
+    }
+
     public void shuffleButtonClick (View v){
 
         if(v.getId() == R.id.shuffleButton){
+            resetImages();
+            shuffle();
+        }
 
-            //enable the tiles so they can be clicked
-            enableAllButtons();
+    }
 
+    public void resetImages() {
+        moves = 0;
+        buttonArray[0][0].setImageBitmap(null);
+        buttonArray[0][1].setImageBitmap(null);
+        buttonArray[0][2].setImageBitmap(null);
+        buttonArray[1][0].setImageBitmap(null);
+        buttonArray[1][1].setImageBitmap(null);
+        buttonArray[1][2].setImageBitmap(null);
+        buttonArray[2][0].setImageBitmap(null);
+        buttonArray[2][1].setImageBitmap(null);
+        buttonArray[2][2].setImageBitmap(null);
+    }
 
-            initializeButtonArray();
+    public void solveButtonClick (View v){
 
-            //clear hashmaps denoting relationship between button and location
-            buttonPressRow.clear();
-            buttonPressCol.clear();
-
-            initializeTempArrays();
-
-            //shuffle array
-            Random rand = new Random();
-            for(int i = 0; i < tpGame.BOARD_SIZE; i++){
-                int randomPos = rand.nextInt(tpGame.BOARD_SIZE);
-                int temp = numArray[i];
-                ImageButton tempButton = tempButtonArray[i];
-                numArray[i] = numArray[randomPos];
-                tempButtonArray[i] = tempButtonArray[randomPos];
-                numArray[randomPos] = temp;
-                tempButtonArray[randomPos] = tempButton;
-            }
-
-            //set buttons in random order and update UI accordingly
-            int tempIndex = 0;
-            for(int i = 0; i < tpGame.BOARD_ROW; i++){
-                for(int j = 0; j < tpGame.BOARD_COL; j++ ){
-                    tpGame.mBoard[i][j] = numArray[tempIndex];
-                    buttonArray[i][j] = tempButtonArray[tempIndex];
-
-                    if(tpGame.mBoard[i][j] == 0){
-                        tpGame.setEmptySpaceRow(i);
-                        tpGame.setEmptySpaceCol(j);
-                    }
-
-                    tempIndex++;
-
-                    buttonPressRow.put(buttonArray[i][j].getId(), i);
-                    buttonPressCol.put(buttonArray[i][j].getId(), j);
-
-                    buttonArray[i][j].setX(xVal[i][j]);
-                    buttonArray[i][j].setY(yVal[i][j]);
-                }
-            }
+        if(v.getId() == R.id.solveButton) {
+            resetImages();
+            addImageToPuzzle(resource);
         }
 
     }
@@ -272,6 +325,11 @@ public class MainActivity extends AppCompatActivity {
                 tpGame.setMove(buttonRow, buttonCol);
                 tpGame.setEmptySpaceRow(buttonRow);
                 tpGame.setEmptySpaceCol(buttonCol);
+
+                moves++;
+                TextView info = (TextView) findViewById(R.id.info);
+                info.setText("Moves so far: " + moves);
+
 
                 checkIfGameOver();
             }

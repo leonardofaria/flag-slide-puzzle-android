@@ -13,120 +13,182 @@
     tools:context="net.leonardofaria.flagslidepuzzle.MainActivity"
     tools:showIn="@layout/activity_main">
 
-    <ImageButton
-        android:id="@+id/zero"
-        android:background="@null"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_alignParentLeft="true"
+    <TextView
+        android:text="Moves so far: 0"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
-        android:layout_marginLeft="21dp"
-        android:layout_marginTop="50dp"
-        android:onClick="ButtonOnClick"
-        />
+        android:layout_marginStart="0dp"
+        android:id="@+id/info" />
 
-    <ImageButton
-        android:id="@+id/one"
-        android:background="@null"
-        android:layout_width="100dp"
+    <LinearLayout
+        android:id="@+id/InnerRelativeLayout"
+        android:layout_width="fill_parent"
         android:layout_height="100dp"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginLeft="115dp"
-        android:layout_marginTop="50dp"
-        android:onClick="ButtonOnClick"
-        android:src="@drawable/ic_launcher"/>
+        android:layout_below="@+id/box"
+        android:layout_marginTop="10dp"
+        >
 
-    <ImageButton
-        android:id="@+id/two"
-        android:background="@null"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginLeft="209dp"
-        android:layout_marginTop="50dp"
-        android:onClick="ButtonOnClick"
-        android:src="@drawable/ic_launcher"/>
+        <Button
+            android:id="@+id/shuffleButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_weight="0.5"
+            android:onClick="shuffleButtonClick"
+            android:layout_alignParentBottom="true"
+            android:textAllCaps="false"
+            android:text="New Puzzle" />
 
-    <ImageButton
-        android:id="@+id/three"
-        android:background="@null"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginLeft="21dp"
-        android:layout_marginTop="144dp"
-        android:onClick="ButtonOnClick"
-        android:src="@drawable/ic_launcher"/>
+        <Button
+            android:id="@+id/solveButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_weight="0.5"
+            android:onClick="solveButtonClick"
+            android:layout_alignParentBottom="true"
+            android:textAllCaps="false"
+            android:text="Solve Puzzle" />
 
-    <ImageButton
-        android:id="@+id/four"
-        android:background="@null"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginLeft="115dp"
-        android:layout_marginTop="144dp"
-        android:onClick="ButtonOnClick"
-        android:src="@drawable/ic_launcher"/>
+    </LinearLayout>
 
-    <ImageButton
-        android:id="@+id/five"
-        android:background="@null"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginLeft="209dp"
-        android:layout_marginTop="144dp"
-        android:onClick="ButtonOnClick"
-        android:src="@drawable/ic_launcher"/>
-
-    <ImageButton
-        android:id="@+id/six"
-        android:background="@null"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginLeft="21dp"
-        android:layout_marginTop="238dp"
-        android:onClick="ButtonOnClick"
-        android:src="@drawable/ic_launcher"/>
-
-    <ImageButton
-        android:id="@+id/seven"
-        android:background="@null"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginLeft="115dp"
-        android:layout_marginTop="238dp"
-        android:onClick="ButtonOnClick"
-        android:src="@drawable/ic_launcher"/>
-
-    <ImageButton
-        android:id="@+id/eight"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginLeft="209dp"
-        android:layout_marginTop="238dp"
-        android:onClick="ButtonOnClick"
-        android:src="@drawable/ic_launcher"/>
-
-
-    <Button
-        android:id="@+id/shuffleButton"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
+    <RelativeLayout
+        android:layout_width="310dp"
+        android:layout_height="310dp"
+        android:layout_marginTop="10dp"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="385dp"
-        android:onClick="shuffleButtonClick"
-        android:text="Shuffle" />
+        android:id="@+id/box"
+        android:layout_below="@+id/info">
+
+        <net.leonardofaria.flagslidepuzzle.CustomSquareLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            android:id="@+id/frame"
+            android:layout_width="310dp"
+            android:layout_height="310dp"
+            android:layout_gravity="center"
+            android:layout_centerVertical="true"
+            android:layout_centerHorizontal="true"
+            android:background="#eee">
+
+            <ImageButton
+                android:id="@+id/zero"
+                android:background="@null"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginLeft="0dp"
+                android:layout_marginTop="0dp"
+                android:onClick="ButtonOnClick"
+                android:scaleType="fitCenter"
+                />
+
+            <ImageButton
+                android:id="@+id/one"
+                android:background="@null"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginLeft="105dp"
+                android:layout_marginTop="0dp"
+                android:onClick="ButtonOnClick"
+                android:scaleType="fitCenter"
+                android:src="@drawable/ic_launcher"/>
+
+            <ImageButton
+                android:id="@+id/two"
+                android:background="@null"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginLeft="210dp"
+                android:layout_marginTop="0dp"
+                android:onClick="ButtonOnClick"
+                android:scaleType="fitCenter"
+                android:src="@drawable/ic_launcher"/>
+
+            <ImageButton
+                android:id="@+id/three"
+                android:background="@null"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginLeft="0dp"
+                android:layout_marginTop="105dp"
+                android:onClick="ButtonOnClick"
+                android:scaleType="fitCenter"
+                android:src="@drawable/ic_launcher"/>
+
+            <ImageButton
+                android:id="@+id/four"
+                android:background="@null"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginLeft="105dp"
+                android:layout_marginTop="105dp"
+                android:onClick="ButtonOnClick"
+                android:scaleType="fitCenter"
+                android:src="@drawable/ic_launcher"/>
+
+            <ImageButton
+                android:id="@+id/five"
+                android:background="@null"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginLeft="210dp"
+                android:layout_marginTop="105dp"
+                android:onClick="ButtonOnClick"
+                android:scaleType="fitCenter"
+                android:src="@drawable/ic_launcher"/>
+
+            <ImageButton
+                android:id="@+id/six"
+                android:background="@null"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginLeft="0dp"
+                android:layout_marginTop="210dp"
+                android:onClick="ButtonOnClick"
+                android:scaleType="fitCenter"
+                android:src="@drawable/ic_launcher"/>
+
+            <ImageButton
+                android:id="@+id/seven"
+                android:background="@null"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginLeft="105dp"
+                android:layout_marginTop="210dp"
+                android:onClick="ButtonOnClick"
+                android:scaleType="fitCenter"
+                android:src="@drawable/ic_launcher"/>
+
+            <ImageButton
+                android:id="@+id/eight"
+                android:background="@null"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginLeft="210dp"
+                android:layout_marginTop="210dp"
+                android:onClick="ButtonOnClick"
+                android:scaleType="fitCenter"
+                android:src="@drawable/ic_launcher"/>
+
+        </net.leonardofaria.flagslidepuzzle.CustomSquareLayout>
+
+    </RelativeLayout>
+
 </RelativeLayout>

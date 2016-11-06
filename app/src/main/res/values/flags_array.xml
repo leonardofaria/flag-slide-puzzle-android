@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <array name="flags">
+        <item>@drawable/flag_brazil</item>
+        <item>@drawable/flag_canada</item>
+    </array>
+
+</resources>
