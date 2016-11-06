@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/content_main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="net.leonardofaria.flagslidepuzzle.MainActivity"
+    tools:showIn="@layout/activity_main">
+
+    <ImageButton
+        android:id="@+id/zero"
+        android:background="@null"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="21dp"
+        android:layout_marginTop="50dp"
+        android:onClick="ButtonOnClick"
+        />
+
+    <ImageButton
+        android:id="@+id/one"
+        android:background="@null"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="115dp"
+        android:layout_marginTop="50dp"
+        android:onClick="ButtonOnClick"
+        android:src="@drawable/ic_launcher"/>
+
+    <ImageButton
+        android:id="@+id/two"
+        android:background="@null"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="209dp"
+        android:layout_marginTop="50dp"
+        android:onClick="ButtonOnClick"
+        android:src="@drawable/ic_launcher"/>
+
+    <ImageButton
+        android:id="@+id/three"
+        android:background="@null"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="21dp"
+        android:layout_marginTop="144dp"
+        android:onClick="ButtonOnClick"
+        android:src="@drawable/ic_launcher"/>
+
+    <ImageButton
+        android:id="@+id/four"
+        android:background="@null"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="115dp"
+        android:layout_marginTop="144dp"
+        android:onClick="ButtonOnClick"
+        android:src="@drawable/ic_launcher"/>
+
+    <ImageButton
+        android:id="@+id/five"
+        android:background="@null"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="209dp"
+        android:layout_marginTop="144dp"
+        android:onClick="ButtonOnClick"
+        android:src="@drawable/ic_launcher"/>
+
+    <ImageButton
+        android:id="@+id/six"
+        android:background="@null"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="21dp"
+        android:layout_marginTop="238dp"
+        android:onClick="ButtonOnClick"
+        android:src="@drawable/ic_launcher"/>
+
+    <ImageButton
+        android:id="@+id/seven"
+        android:background="@null"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="115dp"
+        android:layout_marginTop="238dp"
+        android:onClick="ButtonOnClick"
+        android:src="@drawable/ic_launcher"/>
+
+    <ImageButton
+        android:id="@+id/eight"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="209dp"
+        android:layout_marginTop="238dp"
+        android:onClick="ButtonOnClick"
+        android:src="@drawable/ic_launcher"/>
+
+
+    <Button
+        android:id="@+id/shuffleButton"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="385dp"
+        android:onClick="shuffleButtonClick"
+        android:text="Shuffle" />
+</RelativeLayout>

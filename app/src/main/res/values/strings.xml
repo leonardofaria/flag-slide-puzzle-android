@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">Flag Slide Puzzle</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="about_headline">About</string>
+    <string name="about_text">Assignment created by Leonardo Faria for WMDD 4940 - Android Development course in Langara College.</string>
+    <string name="about_history_headline">History</string>
+    <string name="about_history">
+    An early variant of tic-tac-toe was played in the Roman Empire, around the first century BC. It was called Terni Lapilli and instead of having any number of pieces, each player only had three, thus they had to move them around to empty spaces to keep playing. The game\'s grid markings have been found chalked all over Rome. However, according to Claudia Zaslavsky\'s book Tic Tac Toe: And Other Three-In-A Row Games from Ancient Egypt to the Modern Computer, Tic-tac-toe could originate back to ancient Egypt. Another closely related ancient game is Three Men\'s Morris which is also played on a simple grid and requires three pieces in a row to finish.\n\nThe different names of the game are more recent. The first print reference to "noughts and crosses", the British name, appeared in 1864. In his novel "Can You Forgive Her", 1864, Anthony Trollope refers to a clerk playing "tit-tat-toe". The first print reference to a game called "tick-tack-toe" occurred in 1884, but referred to "a children\'s game played on a slate, consisting in trying with the eyes shut to bring the pencil down on one of the numbers of a set, the number hit being scored". "Tic-tac-toe" may also derive from "tick-tack", the name of an old version of backgammon first described in 1558. The U.S. renaming of Noughts and crosses as tic-tac-toe occurred in the 20th century.\n\nIn 1952, OXO (or Noughts and Crosses) for the EDSAC computer became one of the first known video games. The computer player could play perfect games of tic-tac-toe against a human opponent.\n\nIn 1975, tic-tac-toe was also used by MIT students to demonstrate the computational power of Tinkertoy elements. The Tinkertoy computer, made out of (almost) only Tinkertoys, is able to play tic-tac-toe perfectly. It is currently on display at the Museum of Science, Boston.
+    </string>
+</resources>
