@@ -6,4 +6,4 @@ This is a really really simple assignment of my Android course in the [Web and M
 
 ## Screenshots
 
-<img src="https://raw.github.com/leonardofaria/tictactoe-android/master/flag-slide-puzzle-android1.png" width="50%"><img src="https://raw.github.com/leonardofaria/tictactoe-android/master/flag-slide-puzzle-android2.png" width="50%">
+<img src="https://raw.github.com/leonardofaria/flag-slide-puzzle-android/master/screenshot1.png" width="50%"><img src="https://raw.github.com/leonardofaria/flag-slide-puzzle-android/master/screenshot2.png" width="50%">
